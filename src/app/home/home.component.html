@@ -5,6 +5,12 @@
   <div class="botoes">
     <button (click)="comecar()">Começar</button>
     <button (click)="pausar()">Pausar</button>
+    <button (click)="marcar()">Marcar</button>
+  </div>
+  <div class="tempoMarcado" fxLayout="column">
+    <span *ngFor="let tempo of listaTempo; let i = index">
+      [{{ i }}] {{ tempo }}
+    </span>
   </div>
 </div>
 

@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit{
   public segundos: number = 0;
   public minutos: number = 25;
 
+  public listaTempo: string[] = [];
+
   constructor() {
 
   }
@@ -22,7 +24,7 @@ export class HomeComponent implements OnInit{
 
   public comecar() {
     if(this.cronometro === null) {
-      console.log('começou');
+      //console.log('começou');
       this.cronometro = setInterval(() => {
         if(this.segundos === 0) {
           this.minutos -= 1;
@@ -42,13 +44,14 @@ export class HomeComponent implements OnInit{
 
   public pausar() {
     if(this.cronometro !== null) {
-      console.log('pausou');
+      //console.log('pausou');
       clearInterval(this.cronometro);
       this.cronometro = null;
     }
   }
 
   public marcar() {
-
+    this.listaTempo.push(this.minutos + ':' + this.segundos);
+    //console.log(this.listaTempo);
   }
 }
