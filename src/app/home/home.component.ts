@@ -54,4 +54,26 @@ export class HomeComponent implements OnInit{
     this.listaTempo.push(this.minutos + ':' + this.segundos);
     //console.log(this.listaTempo);
   }
+
+  public descansar() {
+    if(this.cronometro === null) {
+      this.segundos = 0;
+      this.minutos = 5;
+
+      this.cronometro = setInterval(() => {
+        if(this.segundos === 0) {
+          this.minutos -= 1;
+
+          if(this.minutos === 0) {
+            clearInterval(this.cronometro);
+            return;
+          }
+
+          this.segundos = 60;
+        }
+
+        this.segundos -= 1;
+      }, 1000);
+    }
+  }
 }
