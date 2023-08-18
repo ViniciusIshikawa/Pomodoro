@@ -1,0 +1,10 @@
+<div class="principal" fxLayout="column">
+  <div class="cronometro">
+    {{ minutos | number:'2.0-0' }} : {{ segundos | number:'2.0-0' }}
+  </div>
+  <div class="botoes">
+    <button (click)="comecar()">Começar</button>
+    <button (click)="pausar()">Pausar</button>
+  </div>
+</div>
+
