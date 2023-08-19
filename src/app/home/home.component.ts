@@ -9,8 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit{
 
   public cronometro: any = null;
+
   public segundos: number = 0;
-  public minutos: number = 25;
+  public minutos: number = 0;
+  public tempoInterval: number = 1000;
+
+  public tipoCronometro: string = "";
+  public titulo: string = "";
 
   public listaTempo: string[] = [];
 
@@ -23,24 +28,62 @@ export class HomeComponent implements OnInit{
   }
 
   public comecar() {
-    if(this.cronometro === null) {
-      //console.log('começou');
-      this.cronometro = setInterval(() => {
-        if(this.segundos === 0) {
-          this.minutos -= 1;
+    if(this.cronometro !== null) {
+      clearInterval(this.cronometro);
+      this.cronometro = null;
+    }
 
-          if(this.minutos === 0) {
-            clearInterval(this.cronometro);
-            return;
+    if(this.tipoCronometro == "trabalho") {
+      if(this.cronometro === null) {
+        console.log("começou");
+        this.cronometro = setInterval(() => {
+          if(this.segundos === 0) {
+            this.minutos -= 1;
+
+            if(this.minutos === 0) {
+              clearInterval(this.cronometro);
+              return;
+            }
+
+            this.segundos = 60;
           }
 
-          this.segundos = 60;
-        }
+          this.segundos -= 1;
+        }, this.tempoInterval);
+      }
+    } else if(this.tipoCronometro = "descanso") {
+      if(this.cronometro === null) {
+        this.cronometro = setInterval(() => {
+          if(this.segundos === 0) {
+            this.minutos -= 1;
 
-        this.segundos -= 1;
-      }, 1000);
+            if(this.minutos === 0) {
+              clearInterval(this.cronometro);
+              return;
+            }
+
+            this.segundos = 60;
+          }
+
+          this.segundos -= 1;
+        }, this.tempoInterval);
+      }
     }
-}
+  }
+
+  public trabalhar() {
+    this.tipoCronometro = "trabalho";
+    this.titulo = "Foco"
+    this.minutos = 25;
+    this.segundos = 0;
+  }
+
+  public descansar() {
+    this.tipoCronometro = "descanso";
+    this.titulo = "Decanse";
+    this.segundos = 0;
+    this.minutos = 5;
+  }
 
   public pausar() {
     if(this.cronometro !== null) {
@@ -51,29 +94,21 @@ export class HomeComponent implements OnInit{
   }
 
   public marcar() {
-    this.listaTempo.push(this.minutos + ':' + this.segundos);
     //console.log(this.listaTempo);
+    this.listaTempo.push(this.minutos + ":" + this.segundos);
   }
 
-  public descansar() {
-    if(this.cronometro === null) {
+  public zerar() {
+    clearInterval(this.cronometro);
+    this.cronometro = null;
+
+    if(this.tipoCronometro == "trabalho") {
+      this.segundos = 0;
+      this.minutos = 25;
+    } else if(this.tipoCronometro == "descanso") {
       this.segundos = 0;
       this.minutos = 5;
-
-      this.cronometro = setInterval(() => {
-        if(this.segundos === 0) {
-          this.minutos -= 1;
-
-          if(this.minutos === 0) {
-            clearInterval(this.cronometro);
-            return;
-          }
-
-          this.segundos = 60;
-        }
-
-        this.segundos -= 1;
-      }, 1000);
     }
+
   }
 }

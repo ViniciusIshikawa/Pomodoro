@@ -1,6 +1,19 @@
-.principal {
+.fundo {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh; /* Altura max da tela */
+}
+
+.principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  padding: 10px 10px;
+  width: 40%;
+}
+
+.botoes {
+  width: 100%;
 }

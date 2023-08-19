@@ -1,17 +1,31 @@
-<div class="principal" fxLayout="column">
-  <div class="cronometro">
-    {{ minutos | number:'2.0-0' }} : {{ segundos | number:'2.0-0' }}
-  </div>
-  <div class="botoes">
-    <button (click)="comecar()">Começar</button>
-    <button (click)="pausar()">Pausar</button>
-    <button (click)="marcar()">Marcar</button>
-    <button (click)="descansar()">Descanso</button>
-  </div>
-  <div class="tempoMarcado" fxLayout="column">
-    <span *ngFor="let tempo of listaTempo; let i = index">
-      [{{ i }}] {{ tempo }}
-    </span>
+<div class="fundo" fxLayout="column">
+  <h1>{{ titulo }}</h1>
+
+  <div class="principal" fxLayout="column">
+    <div class="cronometro">
+      {{ minutos | number:'2.0-0' }} : {{ segundos | number:'2.0-0' }}
+    </div>
+    <div fxFlex="10px"></div>
+    <div fxLayoutAlign.gt-md="space-evenly center" fxLayout="column" fxLayout.gt-md="row" class="botoes">
+      <div fxLayout.gt-md="column" fxLayoutAlign="space-evenly center">
+        <div fxFlex="20%"></div>
+        <button (click)="comecar()">Começar</button>
+        <button (click)="pausar()">Pausar</button>
+        <div fxFlex="20%"></div>
+      </div>
+      <div fxFlex="15px"></div>
+      <div fxLayout.gt-md="column" fxLayoutAlign="space-evenly center">
+        <button (click)="trabalhar()">Trabalhar</button>
+        <button (click)="marcar()">Marcar</button>
+        <button (click)="zerar()">Zerar</button>
+        <button (click)="descansar()">Descanso</button>
+      </div>
+    </div>
+    <div class="tempoMarcado" fxLayout="column">
+      <span *ngFor="let tempo of listaTempo; let i = index">
+        [{{ i }}] {{ tempo }}
+      </span>
+    </div>
   </div>
 </div>
 
