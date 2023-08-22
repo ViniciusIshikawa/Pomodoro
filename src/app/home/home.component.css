@@ -14,6 +14,17 @@
   width: 40%;
 }
 
+.cronometro {
+  font-family: 'digital-bold', sans-serif;
+  font-size: 60px;
+  color: red;
+}
+
 .botoes {
   width: 100%;
+}
+
+@font-face {
+  font-family: 'digital-bold';
+  src: url(../../assets/fonts/DS-DIGIB.TTF) format('truetype');
 }
