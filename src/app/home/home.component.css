@@ -15,9 +15,15 @@
 }
 
 .cronometro {
+  position: absolute;
   font-family: 'digital-bold', sans-serif;
-  font-size: 60px;
+  font-size: 70px;
   color: red;
+}
+
+#relogioDigital {
+  z-index: -1;
+  position: absolute;
 }
 
 .botoes {

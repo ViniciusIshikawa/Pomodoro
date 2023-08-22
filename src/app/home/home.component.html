@@ -2,11 +2,11 @@
   <h1>{{ titulo }}</h1>
 
   <div class="principal" fxLayout="column">
-    <div fxFlex="20px"></div>
     <div class="cronometro">
       {{ minutos | number:'2.0-0' }} : {{ segundos | number:'2.0-0' }}
     </div>
-    <div fxFlex="10px"></div>
+    <img id="relogioDigital" src="../../assets/img/relogio-digital.png" alt="Relógio digital">
+    <div fxFlex="300px"></div>
     <div fxLayoutAlign.gt-md="space-evenly center" fxLayout="column" fxLayout.gt-md="row" class="botoes">
       <div fxLayout.gt-md="column" fxLayoutAlign="space-evenly center">
         <div fxFlex="20%"></div>
