@@ -28,6 +28,11 @@ export class HomeComponent implements OnInit{
   }
 
   public comecar() {
+    if(this.tipoCronometro == "") {
+      alert("Selecione o tipo de crônometro!");
+      return;
+    }
+
     if(this.cronometro !== null) {
       clearInterval(this.cronometro);
       this.cronometro = null;
