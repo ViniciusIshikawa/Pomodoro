@@ -1,25 +1,25 @@
 <div class="fundo" fxLayout="column">
   <h1>{{ titulo }}</h1>
 
-  <div class="principal" fxLayout="column">
+  <div class="principal" fxLayout="column" fxFlex>
     <div class="cronometro">
       {{ minutos | number:'2.0-0' }} : {{ segundos | number:'2.0-0' }}
     </div>
     <img id="relogioDigital" src="../../assets/img/relogio-digital.png" alt="Relógio digital">
-    <div fxFlex="300px"></div>
-    <div fxLayoutAlign.gt-md="space-evenly center" fxLayout="column" fxLayout.gt-md="row" class="botoes">
-      <div fxLayout.gt-md="column" fxLayoutAlign="space-evenly center">
+    <div fxFlex="400px"></div>
+    <div class="botoes" fxLayout="column">
+      <div fxLayoutAlign="space-evenly center">
         <div fxFlex="20%"></div>
-        <button (click)="comecar()">Começar</button>
-        <button (click)="pausar()">Pausar</button>
+        <button mat-raised-button color="primary" (click)="comecar()">Começar</button>
+        <button mat-raised-button color="primary" (click)="pausar()">Pausar</button>
         <div fxFlex="20%"></div>
       </div>
-      <div fxFlex="15px"></div>
-      <div fxLayout.gt-md="column" fxLayoutAlign="space-evenly center">
-        <button (click)="trabalhar()">Trabalhar</button>
-        <button (click)="marcar()">Marcar</button>
-        <button (click)="zerar()">Zerar</button>
-        <button (click)="descansar()">Descanso</button>
+      <div fxFlex="50px"></div>
+      <div fxLayoutAlign="space-evenly center">
+        <button mat-raised-button color="primary" (click)="trabalhar()">Trabalhar</button>
+        <button mat-raised-button color="primary" (click)="marcar()">Marcar</button>
+        <button mat-raised-button color="primary" (click)="zerar()">Zerar</button>
+        <button mat-raised-button color="primary" (click)="descansar()">Descanso</button>
       </div>
     </div>
     <div class="tempoMarcado" fxLayout="column">
