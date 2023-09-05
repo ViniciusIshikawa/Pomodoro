@@ -20,6 +20,7 @@
         <button mat-raised-button color="primary" (click)="marcar()">Marcar</button>
         <button mat-raised-button color="primary" (click)="zerar()">Zerar</button>
         <button mat-raised-button color="primary" (click)="descansar()">Descanso</button>
+        <button mat-raised-button color="primary" (click)="buscarMusica()">Buscar Música</button>
       </div>
     </div>
     <div class="tempoMarcado" fxLayout="column">
@@ -27,6 +28,19 @@
         [{{ i }}] {{ tempo }}
       </span>
     </div>
+      <input type="text" [(ngModel)]="nomeMusica">
+      <button *ngIf="nomeMusica" matSuffix mat-icon-button aria-label="Clear" (click)="nomeMusica = ''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <div *ngIf="listaMusica.length > 0">
+        <a *ngFor="let musica of listaMusica" href={{musica.urlMusica}} target="_blank">
+          <span>{{musica.nomeArtista}}</span>
+          <br>
+          <span>{{musica.nomeMusica}}</span>
+          <img src={{musica.imgCapa}}>
+        </a>
+
+      </div>
   </div>
 </div>
 

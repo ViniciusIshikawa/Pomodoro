@@ -1,5 +1,7 @@
 import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { SpotifyService } from '../shared/service/spotify.service';
+import { Musica } from '../shared/models/musica.model';
 
 @Component({
   selector: 'app-home',
@@ -16,16 +18,16 @@ export class HomeComponent implements OnInit{
 
   public tipoCronometro: string = "";
   public titulo: string = "";
+  public nomeMusica: string = "";
 
   public listaTempo: string[] = [];
+  public listaMusica: Musica[] = [];
 
-  constructor() {
+  constructor(
+    private spotifyService: SpotifyService
+  ) { }
 
-  }
-
-  ngOnInit(): void {
-
-  }
+  ngOnInit(){ }
 
   public comecar() {
     if(this.tipoCronometro == "") {
@@ -49,7 +51,6 @@ export class HomeComponent implements OnInit{
               clearInterval(this.cronometro);
               return;
             }
-
             this.segundos = 60;
           }
 
@@ -66,7 +67,6 @@ export class HomeComponent implements OnInit{
               clearInterval(this.cronometro);
               return;
             }
-
             this.segundos = 60;
           }
 
@@ -114,6 +114,10 @@ export class HomeComponent implements OnInit{
       this.segundos = 0;
       this.minutos = 5;
     }
+  }
 
+  public async buscarMusica(): Promise<any> {
+    this.listaMusica = await this.spotifyService.listarMusicas(this.nomeMusica);
+    console.log(this.listaMusica);
   }
 }
